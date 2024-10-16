@@ -19,7 +19,9 @@ const Home = () => {
             Authorization: `Bearer ${token}`, // Adiciona o token no cabeçalho da requisição
           },
         });
-        setPosts(response.data); // Atualiza o estado com os dados da API
+        const sortedPosts = response.data.sort((a, b) => b.id - a.id);
+
+        setPosts(sortedPosts); // Atualiza o estado com os dados da API
       } catch (error) {
         console.error("Erro ao buscar arquivos", error.message);
       }

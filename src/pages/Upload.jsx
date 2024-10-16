@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import api from "../api";
 
 const Upload = () => {
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
+  const navigate = useNavigate();
 
   const handleFileUpload = async (e) => {
     e.preventDefault();
@@ -19,6 +22,7 @@ const Upload = () => {
         },
       });
       alert("Arquivo enviado com sucesso!");
+      navigate("/home");
     } catch (error) {
       console.error("Erro ao enviar arquivo", error.message);
     }
